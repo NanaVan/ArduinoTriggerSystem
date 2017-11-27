@@ -104,14 +104,14 @@ In this case, the AIN+ we choose is the Bandgap reference (1.1(1)V) and the AIN-
 
 **Code**
 ```Arduino
-ACSR |= ((1<< ACBG)|        // AIN+ set to bandgap reference voltage 1.1(1)V
+ACSR |= ((1<< ACBG)|                   // AIN+ set to bandgap reference voltage 1.1(1)V
                  (1<<     ACI)|
-                 (1<<   ACIE)|        // Analog Comparator interrupt is activated
-                 (1<< ACIS1)|);     // Comparator interrupt on falling output edge
-ADCSRB |= (1<<ACME);     // AIN- set to ADC7(A0)
+                 (1<<   ACIE)|         // Analog Comparator interrupt is activated
+                 (1<< ACIS1)|);        // Comparator interrupt on falling output edge
+ADCSRB |= (1<<ACME);                   // AIN- set to ADC7(A0)
 ADCSRA &= ~(1<<ADEN);  
 ADMUX |= ((1<<MUX2)|(1<<MUX1)|(1<<MUX0));
-DIDR1 |= (1 << AIN0D);     // disable the digital input buffer
+DIDR1 |= (1 << AIN0D);                 // disable the digital input buffer
 ```
 
 **Reference link**
