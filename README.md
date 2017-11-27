@@ -1,6 +1,6 @@
 # Catching the TTL trigger
 
-
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
 Our group need to build a new DAQ system for planned nuclear decay experiments, which require a stable and reliable procedure to remote-control all network-connected devices (a spectrum analyzer, a IQ recorder and a server) to successively collecting large amount of data. However, the original trigger system of IQ recorder can not satisfy the requirment. It can only work steadily when executing the _recording mode_ each time the trigger signal comes.
 
