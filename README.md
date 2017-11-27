@@ -1,6 +1,6 @@
 # Catching the TTL trigger
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 
 Our group need to build a new DAQ system for planned nuclear decay experiments, which require a stable and reliable procedure to remote-control all network-connected devices (a spectrum analyzer, a IQ recorder and a server) to successively collecting large amount of data. However, the original trigger system of IQ recorder can not satisfy the requirment. It can only work steadily when executing the _recording mode_ each time the trigger signal comes.
 
@@ -26,7 +26,7 @@ Catching the TTL trigger signal and sednding the *triggered* message to server, 
 
 The TTL trigger signal: 
  * falling edge
- * width: 50 $\mu$ s
+ * width: 50 μs
  * amplitude range: 0~4V
 
 ![image](/Pic/triggerSignal.png)
@@ -43,7 +43,7 @@ Process:
 
 ## Circuit diagram
 
-A simple circuit is for measuring the voltage of the resistance (1k$\Omega$), which is connected with another resistance (the same 1k$\Omega$) in series. The total voltage of this circuit is the input voltage between TTL and GND. The voltage between ADC input A0 and GND is what we measure.
+A simple circuit is for measuring the voltage of the resistance (1kΩ), which is connected with another resistance (the same 1kΩ) in series. The total voltage of this circuit is the input voltage between TTL and GND. The voltage between ADC input A0 and GND is what we measure.
 
 ![image](/Pic/Circuit.png)
 
@@ -51,7 +51,7 @@ A simple circuit is for measuring the voltage of the resistance (1k$\Omega$), wh
 
 This idea was used in our beam test 2016.
 
-The main idea is to resetting prescaler. The `analogRead()` usually needs 100$\mu$s to read the analog input. Since the default prescaler is 128.
+The main idea is to resetting prescaler. The `analogRead()` usually needs 100μs to read the analog input. Since the default prescaler is 128.
 
 ADC clock = 16 MHz / 128 = 125 kHz
 
@@ -61,7 +61,7 @@ One ADC transfer needs 13 ticks. The final sampling rate
 
 ***It is far from our design index!***
 
-Since we do not need a very high accuracy of the voltage. We reset the prescaler to instead 4 of 128. The ideal sampling rate is 308 kHz (3.24$\mu$s per point). The test result is 9.42 $\mu$s per point.
+Since we do not need a very high accuracy of the voltage. We reset the prescaler to instead 4 of 128. The ideal sampling rate is 308 kHz (3.24 μs per point). The test result is 9.42 μs per point.
 
 **Code**
 ```Arduino
@@ -100,7 +100,7 @@ This idea will be used in our beam test 2017.
 The main idea is using analog comparator, comparing the input values on the positive pin AIN+ and negative pin AIN-. When the voltage on the AIN+ is higher than the voltage on the AIN-, the Analog Comparator output, ACO, is set.
 The comparator can trigger a separate interrupt, exclusive to the Analog Comparator.
 
-In this case, the AIN+ we choose is the Bandgap reference (1.1$\+-$0.1V) and the AIN- is ADC input A0 (ATmega 32U4 mapping pin ADC7).
+In this case, the AIN+ we choose is the Bandgap reference (1.1(1)V) and the AIN- is ADC input A0 (ATmega 32U4 mapping pin ADC7).
 
 **Code**
 ```Arduino
