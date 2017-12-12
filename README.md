@@ -9,7 +9,7 @@ Our group need to build a new DAQ system for planned nuclear decay experiments, 
 
 **Goal**
 
-Catching the TTL trigger signal and sednding the *triggered* message to server, so that the server can execute the IQ recorder to collect data.
+Catching the TTL trigger signal and sending the *triggered* message to server, so that the server can execute the IQ recorder to collect data.
 
 **material**
 
