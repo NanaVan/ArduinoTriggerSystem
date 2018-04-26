@@ -47,7 +47,7 @@ A simple circuit is for measuring the voltage of the resistance (1kΩ), which is
 
 ![image](/Pic/Circuit.png)
 
-## software 1.0: resetting prescaler
+<h2 id="resetPrescaler"> software 1.0: resetting prescaler</h2>
 
 This idea was used in our beam test 2016.
 
@@ -93,7 +93,7 @@ The new setting has a high risk of shortening life of the Arduino. Since the sug
 In our one-week test experiment, 2016, the trigger was working fairly fine all the time. Nevertheless, bad luck comes in 2017.
 
 
-## software 2.0: using analog comparator
+<h2 id="analogComparator"> software 2.0: using analog comparator</h2>
 
 This idea will be used in our beam test 2017.
 
