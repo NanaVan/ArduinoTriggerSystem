@@ -1,6 +1,15 @@
 #include <Bridge.h>
 #include <Process.h>
 
+//////////////////////////////////////////////////////////
+// Using the analog comparator to catch the trigger signal 
+// (Ground: 4V, triggered: 0V, bandwidth: 50μs)
+// AIN+: internel bandgap reference (1.1(0.1)V)
+// AIN-: ADC7 (A0 on Arduino)
+// Analog comparator interrupt mode: rising output edge
+//////////////////////////////////////////////////////////
+
+
 volatile boolean triggered = false;
 
 void setup() {
@@ -19,9 +28,9 @@ void setup() {
            (0<< ACO)|   // Analog comparator output-off
            (1<< ACI)|   // Analog comparator interrupt flag: clear pending interrupt
            (1<<ACIE)|   // Analog comparator interrupt is activated
-           (0<<ACIC)|   // Analog comparator input capture-disable
-           (1<<ACIS1)|(1<<ACIS0)); // Comparator interrupt on falling output edge 
-  ADCSRB |= (1<<ACME);  // AIN- set to ADC7
+           (0<<ACIC)|   // Disable analog comparator input capture
+           (1<<ACIS1)|(1<<ACIS0)); // Comparator interrupt on rising output edge 
+  ADCSRB |= (1<<ACME);  // AIN- set to ADC7(Analog Input 0)
   ADCSRA &= ~(1<<ADEN);
   ADMUX  |= ((1<<MUX2)|(1<<MUX1)|(1<<MUX0));
 
